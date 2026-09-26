@@ -1,0 +1,13 @@
+---
+title: "Homework 1 (p8105)"
+author: "Sanyu Takirambudde (stt2133)"
+date: 2026-09-26
+output: github_document
+---
+
+# Problem 1
+
+```{r}
+data("penguins", package = "palmerpenguins")
+```
+
