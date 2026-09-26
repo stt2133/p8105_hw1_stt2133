@@ -5,7 +5,7 @@ date: 2026-09-26
 output: github_document
 ---
 
-```{r setup, include=FALSE}
+```{r setup, include = FALSE}
 library(tidyverse)
 ```
 
@@ -54,3 +54,20 @@ mean(pull(hw1_prob2_df, vec_factor))
 **Variables that work in taking the mean:** The random sample a standard Normal distribution (std_norm_samp) and the logical vector indicating whether elements of the sample are greater than 0 (std_norm_samp_pos).
 
 **Variables that do not work in taking the mean:** The character vector (vec_char) and factor vector with 3 different factor “levels" (vec_factor).
+
+
+```{r, eval = FALSE}
+as.numeric(pull(hw1_prob2_df, std_norm_samp_pos))
+as.numeric(pull(hw1_prob2_df, vec_char))
+as.numeric(pull(hw1_prob2_df, vec_factor))
+```
+
+**Logical to Numeric:** The elements in the sample that are positive were understood to be TRUE in the regards to this logical vector so the as.numeric() function converted them to 1s. On the other hand, those that were negative were recorded as FALSE were converted to 0s. 
+
+**Character to Numeric:** R replaces every element in the character vector with NA and outputs a warning message stating: “NAs introduced by coercion.” R cannot figure out how to covert letters to numbers.
+
+**Factor to Numeric:** When as.numeric() is applied to the factor vector, R outputs a vector of integers. It seems that R alphabetizes factor levels, so the 10-length factor vector composed of "low"s, "medium"s, and "high"s is converted to 2s, 3s, and 1s, respectively.
+
+**How this helps explain what happens when you try to take the mean:**
+
+The mean() function requires numeric input for this mathematical operation. For the logical vector, coercion to 1s and 0s takes place automatically. So basically, applying the mean() function to this vector calculated the proportion of TRUE (positive) values in the random sample from a standard Normal distribution. For the character vector, coercion cannot take place in the same fashion, as it is shown that when applying the as.numeric() function, it introduces NAs rather than numbers. For the factor vector, R does not automatically coerce these elements when they are subjected to the mean() function even though the as.numeric() function showed that it actually can understand them as integers that are capable of using to compute the mean. This could be because the alphabetical approach is rather arbitrary so it wouldn't be statistically meaningful. 
