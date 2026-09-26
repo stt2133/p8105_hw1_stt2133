@@ -5,9 +5,23 @@ date: 2026-09-26
 output: github_document
 ---
 
+```{r setup, include=FALSE}
+library(tidyverse)
+```
+
 # Problem 1
 
 ```{r}
 data("penguins", package = "palmerpenguins")
 ```
+
+### Penguins Dataset Description
+
+**Variables:** The variables included in the penguins dataset are *species, island, bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g, sex, and year*. 
+
+**Size:** The dataset contains `r nrow(penguins)` rows and `r ncol(penguins)` columns. 
+
+**Mean Flipper Length:** The mean flipper length across all penguins in the dataset is `r round(mean(pull(drop_na(penguins, flipper_length_mm), flipper_length_mm)), 2)` mm.
+
+
 
