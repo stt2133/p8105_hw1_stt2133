@@ -23,5 +23,11 @@ data("penguins", package = "palmerpenguins")
 
 **Mean Flipper Length:** The mean flipper length across all penguins in the dataset is `r round(mean(pull(drop_na(penguins, flipper_length_mm), flipper_length_mm)), 2)` mm.
 
+### Scatterplot of Flipper Length (mm) vs Bill Length (mm)
 
+```{r}
+ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) + 
+  geom_point()
+ggsave("p8105_hw1_prob1_scatterplot.png")
+```
 
