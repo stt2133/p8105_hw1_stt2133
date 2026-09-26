@@ -43,3 +43,14 @@ hw1_prob2_df =
     vec_factor = factor(c("low", "medium", "high", "low", "medium", "high", "low", "medium", "high", "low"))
   )
 ```
+
+```{r}
+mean(pull(hw1_prob2_df, std_norm_samp))
+mean(pull(hw1_prob2_df, std_norm_samp_pos))
+mean(pull(hw1_prob2_df, vec_char))
+mean(pull(hw1_prob2_df, vec_factor))
+```
+
+**Variables that work in taking the mean:** The random sample a standard Normal distribution (std_norm_samp) and the logical vector indicating whether elements of the sample are greater than 0 (std_norm_samp_pos).
+
+**Variables that do not work in taking the mean:** The character vector (vec_char) and factor vector with 3 different factor “levels" (vec_factor).
